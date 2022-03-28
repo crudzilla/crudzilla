@@ -12,43 +12,43 @@ public abstract class CRUDZillaFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CRUDZillaFilter.class);
 
-    @ApiParam(value = "Indica qual direção da ordenação do resultado", defaultValue = "ASC")
-    private Order direcaoOrdenacao = Order.ASC;
+    @ApiParam(value = "Sorting order", defaultValue = "ASC")
+    private Order sortOrder = Order.ASC;
 
-    @ApiParam(value = "Indica qual coluna da ordenação do resultado. As colunas disponíveis são os campos do DTO de resultado da consulta.")
-    private String colunaOrdenacao = "";
+    @ApiParam(value = "Column for sorting")
+    private String sortColumn = "";
 
-    @ApiParam(value = "Quantos resultados serão retornados. Limite máximo: 100.", defaultValue = "15")
-    private int tamanhoPagina = 15;
+    @ApiParam(value = "Result page size", defaultValue = "15")
+    private int pageSize = 15;
 
-    @ApiParam(value = "Quantos registros devem ser pulados.", defaultValue = "0")
+    @ApiParam(value = "Offset for the results", defaultValue = "0")
     private int offset = 0;
 
-    public Order getDirecaoOrdenacao() {
-        return direcaoOrdenacao;
+    public Order getSortOrder() {
+        return sortOrder;
     }
 
-    public void setDirecaoOrdenacao(Order direcaoOrdenacao) {
-        this.direcaoOrdenacao = direcaoOrdenacao;
+    public void setSortOrder(Order sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
-    public String getColunaOrdenacao() {
-        return colunaOrdenacao;
+    public String getSortColumn() {
+        return sortColumn;
     }
 
-    public void setColunaOrdenacao(String colunaOrdenacao) {
-        this.colunaOrdenacao = colunaOrdenacao;
+    public void setSortColumn(String sortColumn) {
+        this.sortColumn = sortColumn;
     }
 
-    public int getTamanhoPagina() {
-        return tamanhoPagina;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    public void setTamanhoPagina(int tamanhoPagina) {
-        if (tamanhoPagina <= 100) {
-            this.tamanhoPagina = tamanhoPagina;
+    public void setPageSize(int pageSize) {
+        if (pageSize <= 100) {
+            this.pageSize = pageSize;
         } else {
-            this.tamanhoPagina = 100;
+            this.pageSize = 100;
         }
     }
 
@@ -72,11 +72,11 @@ public abstract class CRUDZillaFilter {
             try {
                 value = field.get(this);
             } catch (IllegalAccessException e) {
-                LOGGER.error(String.format("Erro ao gerar Hash do filtro %s no field %s", this.getClass().getName(), field.getName()), e);
+                LOGGER.error(String.format("Error creating hash for filter %s at field %s", this.getClass().getName(), field.getName()), e);
                 throw new RuntimeException(e);
             }
             if (value != null) {
-                hash.append(Integer.toString(value.hashCode()));
+                hash.append(value.hashCode());
             }
             field.setAccessible(false);
         }

@@ -1,4 +1,4 @@
-CRUDZILLA ----- Powerful and Flexible CRUD's
+CRUDZilla ----- Powerful and Flexible CRUD's
 ===========
 
-Instructions coming in...
+Docs at https://crudzilla.github.io/crudzilla/
