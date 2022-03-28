@@ -1,0 +1,52 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse #
+.settings
+.project
+.classpath
+.studio
+target
+
+# Apple #
+.DS_Store
+
+# Intellij #
+.idea
+*.iml
+*.log
+
+# VSCode
+.vscode
+
+# logback
+logback.out.xml
+
+.mvn/
+
+node_modules/
+src/main/resources/public/
+dist/
+node/
+npm-debug.log
+test-output
+tests/e2e/reports
+tests/unit/coverage
+yarn-error.log
+yarn.lock
+security/target/
+selenium-debug.log
+
+!.mvn/wrapper/maven-wrapper.jar
+
+*phantomjsdriver.log
+*errorPage.html
+*errorPage.png
+*/src/.metadata
+*debug.log
+
+package-lock.json
